@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+    display: flex;
+    flex: 1 1 auto;
+    margin: 20px;
+    height: 500px;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,22,159,1) 43%, rgba(0,212,255,1) 100%);
+    justify-content: center;
+}
+.subcontainer{
+    margin: 20px;
+    padding: 10px;
+    width: 100%;
+    background: rgb(39,30,199);
+    background: linear-gradient(90deg, rgba(39,30,199,0.5069582504970178) 35%, rgba(2,4,24,1) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.item1{
+    color: rgb(238, 176, 42);
+}
+.item2,.item3,.item4{
+    color: aliceblue;
+}
+.item4{
+    display: flex;
+    flex: 1 1 auto;
+    flex-flow: column wrap;
+}
+.formitem4{
+    display: flex;
+    flex: 1 1 auto;
+    flex-flow: column wrap;
+}
+    </style>
+    <script>
+        function signIn()
+        {
+            let fullname = document.getElementById("fullname");
+            let email = document.getElementById("email");
+            let password = document.getElementById("password");
+            if(fullname.value==""&&email.value==""&&password.value==""){
+                alert("You can't submit empty form");
+                return false;
+            }
+            if(fullname.value==""){
+                alert("Name field can't be empty");
+                return false;
+            }
+            if(email.value==""){
+                alert("Email field can't be empty");
+                return false;
+            }
+            passwordValidate(password);
+        }
+        // let pswd = password.value;
+        function passwordValidate(password){
+            if(password.value.trim()==""){
+                alert("Password field can't be blank");
+                return false;
+            }else if(password.value.trim().length<8){
+                alert("Password must contain atleast 8 characters");
+                return false;
+            }else if(password.search(/[0-9]/)==-1){
+                alert("Password must contain a digit");
+                return false;
+            }else if(password.search(/[a-z]/)==-1){
+                alert("Password must contain atleast 1 lowercase alphabet");
+                return false;
+            }else if(password.search(/[A-Z]/)==-1){
+                alert("Password must contain atleast 1 uppercase alphabet");
+                return false;
+            }
+            else if(password.search(/[!\@\#\$\%\^\&\*\(\)\_\-\+\=\<\>\,\?]/)==-1){
+                alert("Password must contain atleast 1 special symbol");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="subcontainer">
+        <div class="item1"><h1 class="heading">ZAIRZA</h1></div>
+        <div class="item2"><h2 class="heading">The Technical Club of CET</h2></div>
+        <div class="item3"><h3 class="signin">Sign In </h3></div>
+        <div class="item4">
+            <form onsubmit="return signIn()" action="signin.html">
+                <div class="formitem1"><label for="fullname">Name: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="fullname" id="fullname" placeholder="Full Name"></div>
+                <br>
+                <div class="formitem2"><label for="email">Email: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="email" id="email" placeholder="example@gmail.com"></div>
+                <br>
+                <div class="formitem3"><label for="password">Password: &nbsp</label><input type="password" name="password" id="password" placeholder="Abcde@12345"></div>
+                <br><br>
+                <div class="formitem4">
+                    <button type="submit">Sign In to continue</button>
+                </div>
+        </form>
+    </div>
+</div>
+        </div>
+    </div>
+</body>
+</html>
